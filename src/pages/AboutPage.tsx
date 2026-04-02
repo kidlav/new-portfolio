@@ -31,7 +31,7 @@ export function AboutPage() {
   return (
     <main>
       {/* Hero */}
-      <div className="section" style={{ paddingTop: 160, paddingBottom: 64, textAlign: 'center', maxWidth: 680, margin: '0 auto' }}>
+      <div className="section about-hero-section" style={{ paddingBottom: 64, textAlign: 'center', maxWidth: 680, margin: '0 auto' }}>
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -61,7 +61,11 @@ export function AboutPage() {
             style={{ willChange: 'transform' }}
           >
             <div className="about-avatar-box">
-              <span className="about-avatar-placeholder">VK</span>
+              <img
+                src="/Adobe Express - file.png"
+                alt="Vladislav Kovalenko"
+                className="about-avatar-img"
+              />
             </div>
 
             <div className="about-sidebar-links">

@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react'
+import { GlitchHeadline } from '../components/GlitchHeadline'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import LightRays from '../components/ui/LightRays'
@@ -146,10 +147,9 @@ export function HomePage() {
             Available for work
           </motion.div>
 
-          <motion.h1 variants={fadeUp} className="hero-title">
-            I build interfaces<br />
-            that <em>feel right</em>
-          </motion.h1>
+          <motion.div variants={fadeUp}>
+            <GlitchHeadline />
+          </motion.div>
 
           <motion.p variants={fadeUp} className="hero-sub">
             Frontend and fullstack developer focused on clean architecture,

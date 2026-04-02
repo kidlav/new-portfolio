@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { motion } from 'framer-motion'
-import { ArrowLeft, ArrowRight, Play, ImageIcon, Info } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Play, ImageIcon, Info, ExternalLink, Github } from 'lucide-react'
 import { FadeIn } from './FadeIn'
 import { ScreenshotGallery } from './ScreenshotGallery'
 import { preloadImages } from '../utils/imageOptimization'
@@ -99,6 +99,8 @@ export function CaseStudyPage({ data }: { data: CaseStudyData }) {
     oneliner,
     tags,
     accentRgb,
+    liveUrl,
+    repoUrl,
     hasVideo,
     heroImage,
     hideHeroImage,
@@ -118,6 +120,34 @@ export function CaseStudyPage({ data }: { data: CaseStudyData }) {
   const accentFaint = `rgba(${accentRgb}, 0.07)`
   const accentBorder = `rgba(${accentRgb}, 0.25)`
   const accentDot = `rgba(${accentRgb}, 0.5)`
+
+  // ── Mobile carousel for process steps ─────────────────────────────────────
+  const stepsRef = useRef<HTMLDivElement>(null)
+  const [activeStep, setActiveStep] = useState(0)
+
+  const handleStepsScroll = useCallback(() => {
+    const el = stepsRef.current
+    if (!el) return
+    const items = el.querySelectorAll<HTMLElement>('.cs-step-wrapper')
+    if (!items.length) return
+    const containerLeft = el.getBoundingClientRect().left
+    let closest = 0
+    let minDist = Infinity
+    items.forEach((item, i) => {
+      const dist = Math.abs(item.getBoundingClientRect().left - containerLeft)
+      if (dist < minDist) { minDist = dist; closest = i }
+    })
+    setActiveStep(closest)
+  }, [])
+
+  const scrollToStep = useCallback((i: number) => {
+    const el = stepsRef.current
+    if (!el) return
+    const items = el.querySelectorAll<HTMLElement>('.cs-step-wrapper')
+    if (items[i]) {
+      el.scrollTo({ left: (items[i] as HTMLElement).offsetLeft, behavior: 'smooth' })
+    }
+  }, [])
 
   // Preload images for better perceived performance
   useEffect(() => {
@@ -171,6 +201,37 @@ export function CaseStudyPage({ data }: { data: CaseStudyData }) {
                 <span key={t} className="project-tag cs-tag">{t}</span>
               ))}
             </div>
+
+            {(liveUrl || repoUrl) && (
+              <div className="cs-hero-links">
+                {liveUrl && (
+                  <a
+                    href={liveUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`cs-hero-link${liveUrl === '#' ? ' cs-hero-link--disabled' : ''}`}
+                    aria-disabled={liveUrl === '#'}
+                    onClick={liveUrl === '#' ? (e) => e.preventDefault() : undefined}
+                  >
+                    <ExternalLink size={14} />
+                    Live site
+                  </a>
+                )}
+                {repoUrl && (
+                  <a
+                    href={repoUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`cs-hero-link${repoUrl === '#' ? ' cs-hero-link--disabled' : ''}`}
+                    aria-disabled={repoUrl === '#'}
+                    onClick={repoUrl === '#' ? (e) => e.preventDefault() : undefined}
+                  >
+                    <Github size={14} />
+                    GitHub
+                  </a>
+                )}
+              </div>
+            )}
           </motion.div>
 
           {/* Video first (Arrivalio only), then hero image */}
@@ -244,10 +305,15 @@ export function CaseStudyPage({ data }: { data: CaseStudyData }) {
               {steps.map((step, i) => (
                 <div key={i} className="cs-stepper-segment">
                   <div
-                    className="cs-stepper-dot"
-                    style={{ borderColor: accentDot, color: accent }}
+                    className={`cs-stepper-dot${activeStep === i ? ' cs-stepper-dot--active' : ''}`}
+                    style={{
+                      borderColor: activeStep === i ? accent : accentDot,
+                      color: activeStep === i ? accent : accentDot,
+                      background: activeStep === i ? `rgba(${accentRgb}, 0.12)` : 'var(--bg)',
+                    }}
                     role="listitem"
                     aria-label={`Step ${i + 1}: ${step.title}`}
+                    onClick={() => scrollToStep(i)}
                   >
                     {i + 1}
                   </div>
@@ -257,8 +323,8 @@ export function CaseStudyPage({ data }: { data: CaseStudyData }) {
             </div>
           </FadeIn>
 
-          {/* Step cards — uniform height via CSS grid stretch */}
-          <div className="cs-steps-grid">
+          {/* Step cards — grid on desktop, swipe carousel on mobile */}
+          <div className="cs-steps-grid" ref={stepsRef} onScroll={handleStepsScroll}>
             {steps.map((step, i) => (
               <FadeIn key={i} delay={i * 0.05} className="cs-step-wrapper">
                 <div className="cs-step">

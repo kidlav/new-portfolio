@@ -16,6 +16,10 @@ export type CaseStudyData = {
   tags: string[]
   /** RGB triplet e.g. '241, 241, 255' — used for accent tints on this page */
   accentRgb: string
+  /** Live URL — set to '#' or omit if not deployed yet */
+  liveUrl?: string
+  /** GitHub repo URL — set to '#' or omit if private */
+  repoUrl?: string
   hasVideo?: boolean
   /** Optional main hero image path (relative to /public) */
   heroImage?: string
@@ -43,6 +47,8 @@ export const caseStudies: CaseStudyData[] = [
     oneliner: 'A guided platform for newcomers navigating their first months in Canada',
     tags: ['React', 'TypeScript', 'Tailwind', 'Firebase', 'Figma Make', 'Claude', 'ChatGPT'],
     accentRgb: '110, 231, 160',
+    liveUrl: '#',
+    repoUrl: '#',
     hasVideo: true,
     hideHeroImage: true,
     screenshots: [
@@ -112,6 +118,8 @@ export const caseStudies: CaseStudyData[] = [
     oneliner: 'A redesigned, simplified interface for the City of Vancouver\'s public data dashboard.',
     tags: ['HTML', 'CSS', 'JavaScript', 'ECharts', 'Figma'],
     accentRgb: '82, 180, 255',
+    liveUrl: '#',
+    repoUrl: '#',
     hasVideo: false,
     heroImage: '/VanociverModeShare/modeshare_card_image.png',
     screenshots: [
@@ -180,6 +188,8 @@ export const caseStudies: CaseStudyData[] = [
     oneliner: 'A lightweight survey tool with auto-translation to English, Russian, French, and Spanish for accessible user research.',
     tags: ['ChatGPT', 'Copilot', 'React', 'TypeScript', 'Supabase', 'Figma Make'],
     accentRgb: '237, 237, 252',
+    liveUrl: '#',
+    repoUrl: '#',
     heroImage: '/SurveyApp/surveyapp_hero_image.png',
     screenshots: [
       // Place files at: /public/SurveyApp/Screenshot_*.jpeg

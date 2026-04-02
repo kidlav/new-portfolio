@@ -24,7 +24,9 @@ interface ScreenshotGalleryProps {
 export function ScreenshotGallery({ screenshots, accent, accentBorder }: ScreenshotGalleryProps) {
   const [active, setActive] = useState<number | null>(null)
   const [failed, setFailed] = useState<Record<number, boolean>>({})
+  const [carouselIdx, setCarouselIdx] = useState(0)
   const touchStartX = useRef(0)
+  const scrollRef = useRef<HTMLDivElement>(null)
   const count = screenshots.length
 
   const close = useCallback(() => setActive(null), [])
@@ -34,6 +36,32 @@ export function ScreenshotGallery({ screenshots, accent, accentBorder }: Screens
 
   const goNext = useCallback(() =>
     setActive((i) => (i !== null ? (i + 1) % count : null)), [count])
+
+  // Track which slide is snapped into view
+  const handleCarouselScroll = useCallback(() => {
+    const el = scrollRef.current
+    if (!el) return
+    const items = el.querySelectorAll<HTMLElement>('.sg-thumb')
+    if (!items.length) return
+    const containerLeft = el.getBoundingClientRect().left
+    let closest = 0
+    let minDist = Infinity
+    items.forEach((item, i) => {
+      const dist = Math.abs(item.getBoundingClientRect().left - containerLeft)
+      if (dist < minDist) { minDist = dist; closest = i }
+    })
+    setCarouselIdx(closest)
+  }, [])
+
+  // Scroll carousel to a specific slide
+  const scrollToSlide = useCallback((i: number) => {
+    const el = scrollRef.current
+    if (!el) return
+    const items = el.querySelectorAll<HTMLElement>('.sg-thumb')
+    if (items[i]) {
+      el.scrollTo({ left: (items[i] as HTMLElement).offsetLeft, behavior: 'smooth' })
+    }
+  }, [])
 
   // Keyboard: Escape / ArrowLeft / ArrowRight
   useEffect(() => {
@@ -157,8 +185,12 @@ export function ScreenshotGallery({ screenshots, accent, accentBorder }: Screens
 
   return (
     <>
-      {/* ── Thumbnail grid ──────────────────────────────────────────────── */}
-      <div className="sg-grid">
+      {/* ── Thumbnail grid / mobile swipe carousel ──────────────────────────── */}
+      <div
+        className="sg-grid"
+        ref={scrollRef}
+        onScroll={handleCarouselScroll}
+      >
         {screenshots.map((shot, i) => (
           <button
             key={i}
@@ -184,6 +216,20 @@ export function ScreenshotGallery({ screenshots, accent, accentBorder }: Screens
           </button>
         ))}
       </div>
+
+      {/* Dot indicators — visible on mobile only (hidden via CSS on desktop) */}
+      {count > 1 && (
+        <div className="sg-dots" aria-hidden="true">
+          {screenshots.map((_, i) => (
+            <button
+              key={i}
+              className={`sg-dot${i === carouselIdx ? ' sg-dot--active' : ''}`}
+              onClick={() => scrollToSlide(i)}
+              style={i === carouselIdx ? { background: accent } : undefined}
+            />
+          ))}
+        </div>
+      )}
 
       {/* Portal renders lightbox directly on <body> — no z-index clipping */}
       {createPortal(portal, document.body)}

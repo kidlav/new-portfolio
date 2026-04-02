@@ -4,7 +4,7 @@ import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react'
 export function ContactPage() {
   return (
     <main>
-      <div className="section" style={{ paddingTop: 160 }}>
+      <div className="section contact-hero-section">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
