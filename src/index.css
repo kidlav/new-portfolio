@@ -719,6 +719,8 @@ main {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+  align-items: stretch;
+  grid-auto-rows: 1fr;
 }
 
 .project-card {
@@ -732,6 +734,7 @@ main {
   cursor: pointer;
   text-decoration: none;
   color: inherit;
+  height: 100%;
 }
 
 .project-card:hover {
@@ -795,6 +798,13 @@ main {
   flex-wrap: wrap;
   gap: 5px;
   margin-top: 4px;
+  align-content: flex-start;
+}
+
+@media (min-width: 769px) {
+  .project-tags {
+    min-height: 46px;
+  }
 }
 
 .project-tag {

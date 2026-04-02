@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowRight, Download, Linkedin } from 'lucide-react'
+import { ArrowRight, Linkedin } from 'lucide-react'
 
 const skills = [
   'Figma',
@@ -72,7 +72,6 @@ export function AboutPage() {
                 className="btn btn-primary"
                 style={{ justifyContent: 'center' }}
               >
-                <Download size={16} />
                 View Resume (PDF)
               </a>
               <a

@@ -243,7 +243,7 @@ export function HomePage() {
           <div className="projects-header">
             <div className="projects-header-text">
               <div className="section-eyebrow">Selected Work</div>
-              <h2 className="section-title" data-word-reveal>Projects I've built</h2>
+              <h2 className="section-title">Projects I've built</h2>
               <p className="projects-subtitle">A selection of recent projects I've worked on</p>
             </div>
           </div>
