@@ -6,8 +6,8 @@ export type Project = {
   tags: string[]
   featured?: boolean
   isPlaceholder?: boolean
-  liveUrl: string
-  repoUrl: string
+  liveUrl?: string
+  repoUrl?: string
 }
 
 export const projects: Project[] = [
@@ -41,5 +41,30 @@ export const projects: Project[] = [
     tags: ['React', 'TypeScript', 'Supabase', 'Figma', 'ChatGPT'],
     liveUrl: '#',
     repoUrl: '#',
+  },
+  {
+    title: 'Apex Algorithmic Trading Engine',
+    slug: 'apex-trading',
+    category: 'Systems engineering',
+    description:
+      'A high-performance Node.js system for automated market liquidity analysis and trade execution — running 24/7 on GCP with zero human intervention.',
+    tags: ['Node.js', 'Binance API', 'Telegram API', 'GCP', 'Linux'],
+  },
+  {
+    title: 'Apex Grid Bot',
+    slug: 'apex-grid-bot',
+    category: 'Systems engineering',
+    description:
+      'A fully autonomous grid trading system that executes high-frequency trades 24/7 based on a calculated mathematical grid — with a custom Telegram dashboard for full mobile control.',
+    tags: ['Node.js', 'Telegram API', 'GCP', 'PM2', 'DevOps'],
+  },
+  {
+    title: 'Velocità',
+    slug: 'velocita',
+    category: 'Frontend & UX/UI',
+    description:
+      'A high-end, minimalist portfolio for a professional automotive photographer — built with a stealth CMS, Firebase backend, and a cinematic mobile-first experience.',
+    tags: ['React', 'Tailwind CSS', 'Firebase', 'Framer Motion', 'Vercel'],
+    liveUrl: '#',
   },
 ]

@@ -14,6 +14,9 @@ function CardPreview({ index, slug }: { index: number; slug: string }) {
     arrivalio: '/Arrivalio/card_image.png',
     dashboard: '/VanociverModeShare/modeshare_card_image.png',
     surveyapp: '/SurveyApp/surveyapp_hero_image.png',
+    'apex-trading': '/ApexTrading/card-image.png',
+    'apex-grid-bot': '/ApexGridBot/hero.png',
+    velocita: '/Velocita/hero.png',
   }
 
   const previewSrc = previewBySlug[slug]

@@ -47,8 +47,7 @@ export const caseStudies: CaseStudyData[] = [
     oneliner: 'A guided platform for newcomers navigating their first months in Canada',
     tags: ['React', 'TypeScript', 'Tailwind', 'Firebase', 'Figma Make', 'Claude', 'ChatGPT'],
     accentRgb: '110, 231, 160',
-    liveUrl: '#',
-    repoUrl: '#',
+    liveUrl: 'https://arrivalio.online/',
     hasVideo: true,
     hideHeroImage: true,
     screenshots: [
@@ -109,7 +108,7 @@ export const caseStudies: CaseStudyData[] = [
       'Beyond the product itself, this project taught me a lot about working with real stakeholders, turning research into product decisions, and managing a full development workflow with continuous testing and iteration.',
     ],
     nextProject: { slug: 'dashboard', title: 'Vancouver City Dashboard' },
-    prevProject: { slug: 'surveyapp', title: 'SurveyApp' },
+    prevProject: { slug: 'velocita', title: 'Velocità' },
   },
 
   {
@@ -118,8 +117,7 @@ export const caseStudies: CaseStudyData[] = [
     oneliner: 'A redesigned, simplified interface for the City of Vancouver\'s public data dashboard.',
     tags: ['HTML', 'CSS', 'JavaScript', 'ECharts', 'Figma'],
     accentRgb: '82, 180, 255',
-    liveUrl: '#',
-    repoUrl: '#',
+    liveUrl: 'https://modeshare.netlify.app',
     hasVideo: false,
     heroImage: '/VanociverModeShare/modeshare_card_image.png',
     screenshots: [
@@ -188,8 +186,7 @@ export const caseStudies: CaseStudyData[] = [
     oneliner: 'A lightweight survey tool with auto-translation to English, Russian, French, and Spanish for accessible user research.',
     tags: ['ChatGPT', 'Copilot', 'React', 'TypeScript', 'Supabase', 'Figma Make'],
     accentRgb: '237, 237, 252',
-    liveUrl: '#',
-    repoUrl: '#',
+    liveUrl: 'https://fromsurvey.lat/',
     heroImage: '/SurveyApp/surveyapp_hero_image.png',
     screenshots: [
       // Place files at: /public/SurveyApp/Screenshot_*.jpeg
@@ -238,7 +235,146 @@ export const caseStudies: CaseStudyData[] = [
       'SurveyApp collected the responses needed for Arrivalio\'s user research phase and worked exactly as intended. The codebase stayed small enough that extending it would be straightforward.',
       'The biggest takeaway was about database reliability: free infrastructure tiers have limitations that matter in production. For any real project where data continuity is critical, this needs to be a deliberate decision made early — not discovered after a deployment issue.',
     ],
-    nextProject: { slug: 'arrivalio', title: 'Arrivalio' },
+    nextProject: { slug: 'apex-trading', title: 'Apex Algorithmic Trading Engine' },
     prevProject: { slug: 'dashboard', title: 'Vancouver City Dashboard' },
+  },
+
+  {
+    slug: 'apex-trading',
+    title: 'Apex Algorithmic Trading Engine',
+    oneliner: 'A high-performance Node.js system for automated market liquidity analysis and trade execution.',
+    tags: ['Node.js', 'Binance API', 'WebSockets', 'Telegram API', 'GCP', 'Linux', 'Git'],
+    accentRgb: '212, 175, 55',
+    hasVideo: false,
+    heroImage: '/ApexTrading/card-image.png',
+    screenshots: [],
+    processScreenshots: [
+      { label: 'Multi-Zone Liquidity Logic', src: '/ApexTrading/p-c-1.png' },
+      { label: 'Market Health Check', src: '/ApexTrading/p-c-2.png' },
+      { label: 'Real-time Monitoring', src: '/ApexTrading/p-c-3.png' },
+      { label: 'Cloud Infrastructure', src: '/ApexTrading/p-c-4.png' },
+    ],
+    overview: [
+      'The cryptocurrency market operates 24/7, making it impossible for a human trader to maintain constant discipline and react to volatility spikes across multiple time zones. Manual trading often leads to emotional decision-making and missed opportunities during institutional liquidity windows.',
+      'I engineered an autonomous trading ecosystem that executes the ICT Silver Bullet strategy. The system monitors the market around the clock, identifying "Kill Zones" — high-probability liquidity windows — and executing trades with surgical precision, removing human error from the equation entirely.',
+      'The result is a self-contained engine that combines custom volatility analysis, multi-session scheduling, and real-time Telegram reporting into a single, resilient system deployed on Google Cloud Platform.',
+    ],
+    processIntro: 'This project was built bottom-up: starting with core strategy logic, layering in validation and filtering, then adding observability and cloud deployment for 24/7 reliability.',
+    steps: [
+      {
+        title: 'Multi-Zone Liquidity Logic',
+        detail: 'Programmed a custom scheduler to track 7 distinct global liquidity windows — from Daily Open to New York PM sessions. Each zone has its own timing rules and trade parameters, reflecting the different institutional behaviors active in each session.',
+      },
+      {
+        title: 'Market Health Check',
+        detail: 'Developed a multi-layered validation engine using ATR (Average True Range) and volume analysis. The bot autonomously identifies and skips low-probability "dead zones," significantly preserving capital during flat market conditions before a trade is ever placed.',
+      },
+      {
+        title: 'Real-time Monitoring',
+        detail: 'Integrated with the Telegram Bot API for instant reporting. The system delivers detailed session summaries, trade execution confirmations, and performance metrics directly to my mobile device — full observability without any manual log-checking.',
+      },
+    ],
+    keyDecisions: [
+      'Choosing Node.js as the runtime was deliberate — its event-driven, non-blocking architecture handles concurrent WebSocket streams from Binance and outbound Telegram calls without thread contention, keeping latency minimal during fast market moves.',
+      'Building a custom ATR-based "Smart Filter" was the most impactful engineering decision. Rather than trading every session blindly, the system only enters the market when volatility and volume conditions meet strict thresholds — a simple rule that dramatically reduced false signals and capital exposure.',
+    ],
+    result: [
+      'The engine runs autonomously across all global sessions, executing the ICT Silver Bullet strategy without manual intervention. The Telegram integration provides complete operational visibility, and the GCP deployment has maintained continuous uptime since launch.',
+      'Beyond the trading results, this project deepened my understanding of real-time data pipelines, financial API integration, and the engineering discipline required to build reliable automated systems — where a bug is not just a UX issue but a direct financial risk.',
+    ],
+    prevProject: { slug: 'surveyapp', title: 'SurveyApp' },
+    nextProject: { slug: 'apex-grid-bot', title: 'Apex Grid Bot' },
+  },
+
+  {
+    slug: 'apex-grid-bot',
+    title: 'Apex Grid Bot',
+    oneliner: 'Automated Algorithmic Trading System & Infrastructure.',
+    tags: ['Node.js', 'Telegram API', 'GCP', 'PM2', 'DevOps', 'Systems Design'],
+    accentRgb: '37, 99, 235',
+    heroImage: '/ApexGridBot/hero.png',
+    screenshots: [],
+    processScreenshots: [
+      { label: 'Engine & Infrastructure', src: '/ApexGridBot/p-c-1.png' },
+      { label: 'Telegram Dashboard', src: '/ApexGridBot/p-c-2.png' },
+      { label: 'Smart Notifications', src: '/ApexGridBot/p-c-3.png' },
+      { label: 'Precision & Concurrency', src: '/ApexGridBot/p-c-4.png' },
+    ],
+    overview: [
+      'Apex Grid Bot eliminates emotional bias and manual overhead by executing a fully autonomous grid trading strategy. The system places and manages a calculated mathematical grid of orders 24/7, ensuring consistent market participation without any human intervention.',
+      'The project demonstrates how backend engineering and thoughtful UX design can work together: a robust Node.js engine running on GCP handles all trading logic invisibly in the background, while a custom-built Telegram dashboard gives the operator complete visibility and control from a mobile device.',
+      'Apex Grid Bot bridges the gap between complex algorithmic trading and intuitive user control — transforming a high-stress manual task into a silent background process with full transparency through a simple mobile interface.',
+    ],
+    processIntro: 'The system was built in four layers: a high-performance execution engine, resilient cloud infrastructure, a smart notification system, and critical engineering fixes that made it reliable in production.',
+    steps: [
+      {
+        title: 'Engine & Infrastructure',
+        detail: 'Built with Node.js using high-performance asynchronous logic for real-time order execution and market monitoring. Deployed on GCP in a North American region for low-latency connections. Managed via PM2 for automated process recovery, resource monitoring, and 99.9% uptime. State persistence via custom JSON storage allows the bot to recover its exact grid position and order history instantly after reboots.',
+      },
+      {
+        title: 'Telegram Dashboard',
+        detail: 'Leveraged the Telegram Bot API to create a custom command-line interface accessible from any mobile device. Users can monitor balances, view active grids, and reboot systems via interactive inline_keyboard menus. Financial data is formatted with HTML-style parsing for high readability, including color-coded indicators for BUY (🟢) and SELL (🔴) actions.',
+      },
+      {
+        title: 'Smart Notifications',
+        detail: 'Engineered a priority-based notification system that filters noise and only alerts the operator for critical events: filled orders, completed grid cycles, or boundary warnings. This keeps the interface actionable rather than overwhelming — a deliberate UX decision applied to a backend system.',
+      },
+    ],
+    keyDecisions: [
+      'Choosing PM2 over a simple process manager was deliberate. Its built-in crash recovery, log rotation, and resource monitoring meant I got production-grade reliability without building those systems from scratch — the right tool for a 24/7 autonomous process.',
+      'Building a custom Telegram interface instead of a web dashboard was a constraint that turned into a strength. Telegram is always accessible, requires no authentication UI, and the inline_keyboard system is powerful enough to handle all the control flows needed — all while keeping the architecture simple.',
+    ],
+    result: [
+      'The bot runs autonomously 24/7, executing its grid strategy with no manual intervention. The Telegram dashboard gives full operational visibility and control from anywhere, and PM2 on GCP has maintained consistent uptime through reboots and updates.',
+      'This project sharpened my understanding of distributed systems reliability, API security patterns, and concurrency management — engineering problems where the cost of a bug is immediate and financial. It also reinforced how UX thinking applies beyond interfaces: the notification system and dashboard design required the same discipline as any frontend product.',
+    ],
+    prevProject: { slug: 'apex-trading', title: 'Apex Algorithmic Trading Engine' },
+    nextProject: { slug: 'velocita', title: 'Velocità' },
+  },
+
+  {
+    slug: 'velocita',
+    title: 'Velocità',
+    oneliner: 'A high-end, minimalist portfolio for a professional automotive and motorcycle photographer.',
+    tags: ['React', 'Vite', 'Tailwind CSS', 'Framer Motion', 'Firebase', 'Vercel', 'TDD'],
+    accentRgb: '220, 38, 38',
+    liveUrl: '#',
+    hasVideo: false,
+    heroImage: '/Velocita/hero.png',
+    processScreenshots: [
+      { label: 'Visual Identity & Architecture', src: '/Velocita/p-c-1.png' },
+      { label: 'Mobile-First UX', src: '/Velocita/p-c-2.png' },
+      { label: 'Stealth CMS', src: '/Velocita/p-c-3.png' },
+    ],
+    overview: [
+      'Velocità is a high-end portfolio platform designed for a professional automotive and motorcycle photographer. The brief was clear: visual impact first, everything else second. The design prioritizes the photography and gets out of its own way.',
+      'The visual identity is deliberately extreme — an ultra-minimalist black-and-white palette with a single Racing Red accent. Typography pairs Inter Tight for headlines with JetBrains Mono for photo metadata (ISO, shutter speed, aperture), creating a professional “technical spec” aesthetic that feels native to the automotive world.',
+      'Behind the clean public-facing portfolio sits a fully functional stealth CMS: a protected /manage route with Firebase Google Authentication, allowing the photographer to upload shoots, write metadata, and organize albums through a custom dashboard — with no external CMS subscription required.',
+    ],
+    processIntro: 'The project was built in four phases: establishing the visual identity and architecture, engineering the mobile-first UX, building the stealth CMS, and ensuring reliability through test-driven development.',
+    steps: [
+      {
+        title: 'Visual Identity & Architecture',
+        detail: 'Defined the ultra-minimalist black-and-white palette with Racing Red as the sole accent. Established a project-based architecture where each entry functions as a standalone cinematic album with its own metadata, rather than a flat image gallery. This structural decision shapes the entire UX.',
+      },
+      {
+        title: 'Mobile-First UX',
+        detail: 'Engineered specifically for touch devices by replacing hover-dependent metadata with static and scroll-triggered information. Implemented buttery-smooth inertial scrolling with Lenis and staggered entrance animations via Framer Motion. Every interaction was tested on mobile first.',
+      },
+      {
+        title: 'Stealth CMS',
+        detail: 'Built a full content management system hidden from the public UI. Firebase Google Authentication protects the /manage route, and a custom dashboard allows the photographer to upload media, write metadata, and organize shoots. Firebase Storage handles optimized media delivery and Firestore manages all structured data.',
+      },
+    ],
+    keyDecisions: [
+      'The stealth CMS approach was the right call over a third-party solution like Contentful or Sanity. It keeps the photographer’s workflow entirely within the app, avoids subscription costs, and allowed the dashboard UX to be designed specifically around how a photographer actually thinks about organizing shoots — not around a generic CMS paradigm.',
+      'Adopting TDD for a portfolio project was deliberate. The authentication gating and gallery filter logic are exactly the kind of stateful behavior that breaks subtly. Writing tests first forced clearer thinking about edge cases and gave confidence when refactoring the routing architecture mid-project.',
+    ],
+    result: [
+      'The result is a portfolio that feels as considered as the photography it presents. The minimalist design keeps the focus entirely on the images, while the stealth CMS gives the client full editorial control through a clean dashboard — no technical knowledge required after handoff.',
+      'This project sharpened my ability to design for a specific visual brand under strict constraints, build production-grade authentication flows, and apply TDD in a real frontend codebase. It also reinforced that the best portfolio sites are invisible — the design should never compete with the work it displays.',
+    ],
+    prevProject: { slug: 'apex-grid-bot', title: 'Apex Grid Bot' },
+    nextProject: { slug: 'arrivalio', title: 'Arrivalio' },
   },
 ]
