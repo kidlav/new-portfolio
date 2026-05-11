@@ -7,6 +7,9 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import LightRays from '../components/ui/LightRays'
 import { projects } from '../data/projects'
+
+const HOME_SLUGS = ['arrivalio', 'surveyapp', 'velocita']
+const homeProjects = projects.filter(p => HOME_SLUGS.includes(p.slug))
 import { FadeIn } from '../components/FadeIn'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -23,6 +26,7 @@ function CardPreview({ index, slug }: { index: number; slug: string }) {
     arrivalio: '/Arrivalio/card_image.png',
     dashboard: '/VanociverModeShare/modeshare_card_image.png',
     surveyapp: '/SurveyApp/surveyapp_hero_image.png',
+    velocita: '/Velocita/hero.png',
   }
 
   const previewSrc = previewBySlug[slug]
@@ -251,7 +255,7 @@ export function HomePage() {
 
         <FadeIn>
         <div className="projects-grid">
-          {projects.map((project, i) => (
+          {homeProjects.map((project, i) => (
             <Link
               key={project.title}
               to={`/projects/${project.slug ?? 'project'}`}
@@ -268,7 +272,7 @@ export function HomePage() {
                 <p className="project-desc">{project.description}</p>
                 <div className="project-tags">
                   {project.tags.slice(0, 3).map((t) => (
-                    <span key={t} className="project-tag">{t}</span>
+                    <span key={`${project.slug}-${t}`} className="project-tag">{t}</span>
                   ))}
                 </div>
               </div>

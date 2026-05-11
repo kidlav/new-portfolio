@@ -62,7 +62,7 @@ export function AboutPage() {
           >
             <div className="about-avatar-box">
               <img
-                src="/Adobe Express - file.png"
+                src="/Profile Picture.jpg"
                 alt="Vladislav Kovalenko"
                 className="about-avatar-img"
               />

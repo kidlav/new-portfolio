@@ -48,8 +48,8 @@ export const caseStudies: CaseStudyData[] = [
     tags: ['React', 'TypeScript', 'Tailwind', 'Firebase', 'Figma Make', 'Claude', 'ChatGPT'],
     accentRgb: '110, 231, 160',
     liveUrl: 'https://arrivalio.online/',
-    hasVideo: true,
-    hideHeroImage: true,
+    hasVideo: false,
+    heroImage: '/Arrivalio/card_image.png',
     screenshots: [
       // Place files at: /public/Arrivalio/[file].jpeg
       { label: 'Mobile screenshot 1', src: '/Arrivalio/screenshots_mobile_1.jpeg' },

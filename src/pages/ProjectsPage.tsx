@@ -110,7 +110,7 @@ export function ProjectsPage() {
                   <p className="project-desc">{project.description}</p>
                   <div className="project-tags">
                     {project.tags.map((t) => (
-                      <span key={t} className="project-tag">{t}</span>
+                      <span key={`${project.slug}-${t}`} className="project-tag">{t}</span>
                     ))}
                   </div>
                 </div>
